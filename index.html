@@ -52,7 +52,7 @@
   .nav-links{ display:flex; gap:30px; list-style:none; }
   .nav-links a{ text-decoration:none; color:var(--ink2); font-size:14.5px; font-weight:500; transition:color .2s; }
   .nav-links a:hover{ color:var(--ink); }
-  @media (max-width:760px){ .nav-links{ display:none; } }
+  @media (max-width:760px){ .nav-links{ gap:20px; } .nl-anchor{ display:none; } }
 
   /* ---------- last ned + rødt "kommer snart"-banner ---------- */
   .dl{ position:relative; display:inline-block; }
@@ -424,6 +424,19 @@
   footer nav{ display:flex; gap:22px; flex-wrap:wrap; }
   footer a{ text-decoration:none; }
   footer a:hover{ color:var(--ink); }
+
+  /* ---------- vilkår og personvern (egne visninger i samme fil) ---------- */
+  .nav-links a[aria-current="page"]{ color:var(--ink); box-shadow:inset 0 -2px 0 var(--volt); padding-bottom:4px; }
+  .doc[hidden]{ display:none; }
+  .doc-in{ max-width:780px; margin:0 auto; padding:48px 24px 80px; line-height:1.7; }
+  .doc h1{ font-family:var(--display); font-weight:900; font-size:clamp(34px,6vw,52px); line-height:1; text-transform:uppercase; letter-spacing:-.02em; margin-bottom:28px; }
+  .doc h2{ font-family:var(--display); font-weight:800; font-size:17px; letter-spacing:.04em; color:var(--volt); margin:34px 0 8px; }
+  .doc p{ color:var(--ink2); font-size:16px; margin-bottom:16px; white-space:pre-line; }
+  .doc p.updated{ color:var(--dim); font-size:14px; }
+  .doc .lang{ display:inline-block; font-size:14px; font-weight:600; text-decoration:none; color:var(--ink2); margin:-12px 0 28px; }
+  .doc .lang:hover{ color:var(--ink); }
+  .doc .sep{ margin:64px 0 40px; border:none; border-top:1px solid var(--line); }
+  .doc a{ color:var(--volt); }
 </style>
 </head>
 <body>
@@ -431,19 +444,20 @@
 <header class="nav">
   <div class="progress" id="progress"></div>
   <div class="wrap">
-    <a class="brand" href="#" aria-label="Emivi – til toppen">
+    <a class="brand" href="#top" aria-label="Emivi – til forsiden">
       <span class="logo"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 14 L9 6 L13 12 L16 8 L20 14" stroke="#0a0a0f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <span class="bn">EMIVI</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#appen">Appen</a></li>
-      <li><a href="#slik">Slik fungerer det</a></li>
-      <li><a href="#personvern">Personvern</a></li>
+      <li class="nl-anchor"><a href="#appen">Appen</a></li>
+      <li class="nl-anchor"><a href="#slik">Slik fungerer det</a></li>
+      <li><a href="#vilkar" data-view-link="vilkar">Vilkår</a></li>
+      <li><a href="#personvern" data-view-link="personvern">Personvern</a></li>
     </ul>
   </div>
 </header>
 
-<main>
+<main id="forside">
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="bgfx" aria-hidden="true"></div>
@@ -678,7 +692,7 @@
   </section>
 
   <!-- ================= PERSONVERN ================= -->
-  <section id="personvern" style="padding-top:0">
+  <section id="personvern-forst" style="padding-top:0">
     <div class="wrap">
       <div class="privacy spot">
         <div class="lock" aria-hidden="true">🔒</div>
@@ -711,13 +725,97 @@
   </section>
 </main>
 
+<main class="doc" id="vilkar-side" hidden>
+  <div class="doc-in">
+<article lang="no">
+    <h1>Brukervilkår</h1>
+    <a class="lang" href="#vilkar-en">English version ↓</a>
+      <p>Ved å bruke Emivi godtar du følgende:</p>
+      <p>Emivi Pro er et abonnement som fornyes automatisk (69 kr/mnd eller 599 kr/år i Norge – i andre land vises prisen i lokal valuta før kjøpet). Nye brukere kan få 7 dager gratis prøveperiode på årsabonnementet. Betalingen belastes Apple-kontoen din når kjøpet bekreftes, eller når prøveperioden er over. Abonnementet fornyes automatisk med mindre det sies opp senest 24 timer før perioden utløper. Du administrerer og sier opp abonnementet i innstillingene for Apple-kontoen din.</p>
+      <p>I tillegg kan du kjøpe et engangstilskudd på 100 ekstra Coach-meldinger (12 kr i Norge) – dette er et engangskjøp, ikke et abonnement, og fornyes ikke automatisk. Ekstrameldingene brukes etter at månedens inkluderte meldinger er brukt opp, og er gyldige i 90 dager fra kjøpsdato. Meldinger som ikke er brukt innen da, utløper. Ved å bekrefte et slikt kjøp, samtykker du til at leveringen (tilgangen til de ekstra meldingene) starter umiddelbart, og at du dermed gir avkall på angreretten din for dette kjøpet, i tråd med angrerettloven § 22.</p>
+      <p>Emivi gir generell trenings- og kostholdsveiledning, og er ikke medisinsk rådgivning. Dette gjelder også innhold generert av Coach eller AI-skreddersydde treningsplaner – AI-genererte råd og planer kan inneholde feil, og bør vurderes med sunn fornuft, ikke fulgt blindt. Snakk med lege eller annen kvalifisert helsepersonell før du gjør store endringer i trening eller kosthold, spesielt ved skader, sykdom eller andre helsemessige hensyn.</p>
+      <p>Du er selv ansvarlig for å trene trygt og innenfor egne forutsetninger.</p>
+      <p>Du må være minst 18 år for å bruke Emivi.</p>
+      <p>Vi forbeholder oss retten til å oppdatere appen og disse vilkårene. Fortsatt bruk etter endringer regnes som godkjenning.</p>
+      <p>Kontakt oss via App Store-oppføringen ved spørsmål.</p>
+  </article>
+  <hr class="sep">
+  <article lang="en" id="vilkar-en">
+    <h1>Terms of Use</h1>
+      <p>By using Emivi you agree to the following:</p>
+      <p>Emivi Pro is an auto-renewing subscription (69 NOK/month or 599 NOK/year in Norway – in other countries, the price is shown in your local currency before purchase). New users may get a 7-day free trial on the yearly subscription. Payment is charged to your Apple account when you confirm the purchase, or when the free trial ends. The subscription renews automatically unless it is cancelled at least 24 hours before the end of the current period. You can manage and cancel your subscription in your Apple account settings.</p>
+      <p>You can also purchase a one-time top-up of 100 extra Coach messages (12 NOK in Norway) – this is a one-time purchase, not a subscription, and does not renew automatically. The extra messages are used after the month&#x27;s included messages and are valid for 90 days from the date of purchase. Messages not used by then expire. By confirming such a purchase, you consent to delivery (access to the extra messages) starting immediately, and you thereby waive your statutory right of withdrawal for that purchase.</p>
+      <p>Emivi provides general training and nutrition guidance and is not medical advice. This also applies to content generated by Coach or AI-tailored training plans – AI-generated advice and plans may contain errors and should be reviewed with common sense, not followed blindly. Talk to a doctor or other qualified healthcare professional before making major changes to your training or diet, especially in case of injury, illness, or other health considerations.</p>
+      <p>You are responsible for training safely and within your own limits.</p>
+      <p>You must be at least 18 years old to use Emivi.</p>
+      <p>We reserve the right to update the app and these terms. Continued use after changes counts as acceptance.</p>
+      <p>Contact us via the App Store listing with questions.</p>
+  </article>
+  </div>
+</main>
+
+<main class="doc" id="personvern-side" hidden>
+  <div class="doc-in">
+<article lang="no">
+    <h1>Personvern</h1>
+    <a class="lang" href="#personvern-en">English version ↓</a>
+      <p class="updated">Sist oppdatert: 27. september 2026.</p>
+      <h2>BEHANDLINGSANSVARLIG</h2>
+      <p>Emivi drives av Victor Nilsen (enkeltpersonforetak), Norge. Kontakt oss via App Store-oppføringen for alle personvernspørsmål.</p>
+      <h2>DATA VI LAGRER</h2>
+      <p>Emivi lagrer treningsdata, mat-logg, vekt, mål, søvn og annen fremgang du logger, lokalt på din enhet. Er du logget inn med en konto, synkroniseres disse dataene også til vår sky-tjeneste (Firebase/Google Cloud), knyttet til kontoen din, slik at de følger med om du bytter enhet. Vi selger aldri dataene dine til tredjeparter. Dataene lagres så lenge du har en aktiv konto, og slettes når du sletter kontoen din (se «Sletting av data» under).</p>
+      <p>Progresjonsbilder du laster opp er unntaket: de lagres kun lokalt på enheten din – aldri i skyen, uansett om du er logget inn eller ikke, og de tas heller ikke med i iCloud-sikkerhetskopien. De slettes derfor permanent hvis du sletter appen.</p>
+      <h2>OVERFØRING AV DATA UTENFOR EØS</h2>
+      <p>Våre underleverandører (Google Firebase/Cloud, Google Gemini AI) kan behandle data på servere utenfor EØS, blant annet i USA. Slike overføringer skjer med et gyldig overføringsgrunnlag, som EUs og USAs Data Privacy Framework og/eller EU-kommisjonens standard personvernbestemmelser (SCC).</p>
+      <h2>APPLE HEALTH</h2>
+      <p>Hvis du velger å koble til Apple Health, leser Emivi vekt, skritt og aktivt energiforbruk derfra for å justere kalorimålet ditt og vise fremgang. Denne dataen brukes kun i appen og lastes ikke opp til tredjeparter utover vanlig sky-synk beskrevet over. Du kan koble fra Apple Health når som helst i Innstillinger på telefonen din.</p>
+      <h2>AI-FUNKSJONER (COACH, AI-MATLOGGING OG SKREDDERSYDD PLAN)</h2>
+      <p>Du blir spurt om samtykke før noe sendes til AI-tjenesten, og du kan trekke samtykket tilbake når som helst under Mer i appen. Når du bruker Coach-chatten, AI-matlogging eller ber om en AI-skreddersydd treningsplan, sendes teksten du skriver til Google sin Gemini-AI-modell for å generere et svar. Dette skjer via Google sin Firebase AI-tjeneste (se «Overføring av data utenfor EØS» over). Vi lagrer samtalehistorikken din med Coach (synkronisert til kontoen din som annen appdata), men innholdet brukes ikke til å trene opp Google sine offentlige AI-modeller på vår avtale med dem. For å beskytte AI-tjenesten mot misbruk bekrefter appen overfor Firebase at forespørslene kommer fra den ekte Emivi-appen (Firebase App Check med Apples App Attest). Dette innebærer ingen personopplysninger om deg.</p>
+      <h2>INNLOGGING</h2>
+      <p>Du kan logge inn med Apple, Google eller e-post og passord. Ved innlogging med Apple eller Google mottar vi e-postadressen din (og navnet ditt, hvis du deler det) for å opprette kontoen din. Med Apple kan du velge å skjule e-postadressen din.</p>
+      <h2>BETALING OG ABONNEMENT</h2>
+      <p>Betalingsinformasjon håndteres av Apple gjennom App Store og lagres aldri av oss. Vi bruker RevenueCat som mellomledd for å bekrefte og administrere abonnements- og kjøpsstatusen din – de mottar kjøpsbekreftelser fra Apple, men ikke kortinformasjonen din.</p>
+      <h2>SLETTING AV DATA</h2>
+      <p>Du kan slette kontoen din permanent når som helst under Mer &gt; Konto i appen. Dette sletter kontoen din i Firebase Authentication, alle skylagrede data, og all lokal data på enheten – inkludert progresjonsbilder. Dette kan ikke angres. Sletter du kun appen (uten å bruke slett-konto-knappen) uten å være logget inn, slettes lokale data permanent og kan ikke gjenopprettes.</p>
+      <h2>DINE RETTIGHETER (GDPR)</h2>
+      <p>Som bruker i EU/EØS har du rett til innsyn i, retting av, og sletting av dine personopplysninger, samt rett til dataportabilitet og rett til å trekke tilbake samtykke. Du kan be om innsyn eller retting ved å kontakte oss via App Store-oppføringen. Du har også rett til å klage til Datatilsynet (datatilsynet.no) hvis du mener vi behandler opplysningene dine i strid med regelverket.</p>
+      <p>Har du spørsmål om personvern, kontakt oss via App Store-oppføringen.</p>
+  </article>
+  <hr class="sep">
+  <article lang="en" id="personvern-en">
+    <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: 27 September 2026.</p>
+      <h2>DATA CONTROLLER</h2>
+      <p>Emivi is operated by Victor Nilsen (sole proprietorship), Norway. Contact us via the App Store listing for all privacy questions.</p>
+      <h2>DATA WE STORE</h2>
+      <p>Emivi stores your training data, food log, weight, goals, sleep and other progress you log, locally on your device. If you&#x27;re logged into an account, this data also syncs to our cloud service (Firebase/Google Cloud), tied to your account, so it follows you if you switch devices. We never sell your data to third parties. Data is stored for as long as you have an active account, and is deleted when you delete your account (see &quot;Deleting your data&quot; below).</p>
+      <p>Progress photos you upload are the exception: they&#x27;re stored only locally on your device – never in the cloud, whether you&#x27;re logged in or not, and they are not included in iCloud backups either. They are therefore permanently deleted if you delete the app.</p>
+      <h2>DATA TRANSFERS OUTSIDE THE EEA</h2>
+      <p>Our subprocessors (Google Firebase/Cloud, Google Gemini AI) may process data on servers outside the EEA, including in the US. Such transfers rely on a valid transfer mechanism, such as the EU-US Data Privacy Framework and/or the European Commission&#x27;s Standard Contractual Clauses (SCCs).</p>
+      <h2>APPLE HEALTH</h2>
+      <p>If you choose to connect Apple Health, Emivi reads weight, steps and active energy burned from it to adjust your calorie target and show progress. This data is used only within the app and is not uploaded to third parties beyond the normal cloud sync described above. You can disconnect Apple Health at any time in your phone&#x27;s Settings.</p>
+      <h2>AI FEATURES (COACH, AI FOOD LOGGING AND CUSTOM PLAN)</h2>
+      <p>You are asked for consent before anything is sent to the AI service, and you can withdraw your consent at any time under More in the app. When you use the Coach chat, AI food logging, or request an AI-tailored training plan, the text you write is sent to Google&#x27;s Gemini AI model to generate a response. This happens via Google&#x27;s Firebase AI service (see &quot;Data transfers outside the EEA&quot; above). We store your Coach conversation history (synced to your account like other app data), but the content is not used to train Google&#x27;s public AI models under our agreement with them. To protect the AI service from abuse, the app confirms to Firebase that requests come from the genuine Emivi app (Firebase App Check with Apple&#x27;s App Attest). This involves no personal data about you.</p>
+      <h2>SIGN-IN</h2>
+      <p>You can sign in with Apple, Google or email and password. With Apple or Google sign-in, we receive your email address (and your name, if you share it) to create your account. With Apple, you can choose to hide your email address.</p>
+      <h2>PAYMENT AND SUBSCRIPTION</h2>
+      <p>Payment information is handled by Apple through the App Store and is never stored by us. We use RevenueCat as an intermediary to verify and manage your subscription and purchase status – they receive purchase confirmations from Apple, but not your card details.</p>
+      <h2>DELETING YOUR DATA</h2>
+      <p>You can permanently delete your account at any time under More &gt; Account in the app. This deletes your account in Firebase Authentication, all cloud-stored data, and all local data on the device – including progress photos. This cannot be undone. If you only delete the app (without using the delete-account button) without being logged in, local data is permanently deleted and cannot be recovered.</p>
+      <h2>YOUR RIGHTS (GDPR)</h2>
+      <p>As an EU/EEA user you have the right to access, correct, and delete your personal data, the right to data portability, and the right to withdraw consent. You can request access or correction by contacting us via the App Store listing. You also have the right to lodge a complaint with your national data protection authority if you believe we&#x27;re processing your data unlawfully.</p>
+      <p>If you have privacy questions, contact us via the App Store listing.</p>
+  </article>
+  </div>
+</main>
+
 <footer>
   <div class="wrap">
     <span>© 2026 Emivi</span>
     <nav aria-label="Juridisk">
-      <!-- BYTT UT lenkene under med dine egne adresser til personvern, vilkår og kontakt -->
-      <a href="#">Personvern</a>
-      <a href="#">Vilkår</a>
+      <!-- BYTT UT kontakt-adressen under med din egen e-post -->
+      <a href="#personvern">Personvern</a>
+      <a href="#vilkar">Vilkår</a>
       <a href="mailto:kontakt@example.com">Kontakt</a>
     </nav>
   </div>
@@ -823,6 +921,31 @@
     }, { rootMargin: '-45% 0px -45% 0px' });
     steps.forEach(function(s){ io.observe(s); });
   }
+})();
+</script>
+<script>
+/* Enkel sidevisning: #vilkar og #personvern viser egne sider, alt annet viser forsiden */
+(function(){
+  var views = { vilkar:'vilkar-side', personvern:'personvern-side' };
+  var home = document.getElementById('forside');
+  function route(){
+    var h = location.hash.slice(1), key = null;
+    for (var k in views) if (h === k || h.indexOf(k + '-') === 0) key = k;
+    if (h === 'personvern-forst') key = null;
+    home.hidden = !!key;
+    for (var k2 in views) document.getElementById(views[k2]).hidden = (k2 !== key);
+    document.querySelectorAll('[data-view-link]').forEach(function(a){
+      if (a.getAttribute('data-view-link') === key) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    document.title = key === 'vilkar' ? 'Brukervilkår – Emivi' : key === 'personvern' ? 'Personvern – Emivi' : 'Emivi – treningsappen som er bygget rundt deg';
+    if (key) {
+      var target = document.getElementById(h);
+      if (target && h !== key) target.scrollIntoView(); else window.scrollTo(0,0);
+    } else if (h === 'top' || h === '') { window.scrollTo(0,0); }
+    else { var el = document.getElementById(h); if (el) el.scrollIntoView(); }
+    dispatchEvent(new Event('scroll'));
+  }
+  addEventListener('hashchange', route); route();
 })();
 </script>
 </body>
